@@ -3,169 +3,394 @@
 
 <head>
     <meta charset="UTF-8">
+    <!-- Bootstrap requiere este meta viewport para que su grid responsivo funcione correctamente -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maxikiosco El 86</title>
     <meta name="description"
         content="¿Se te antoja algo? ¡El 86 lo tiene! 5 años siendo el favorito de Villa Bosch. Bebidas, golosinas, panchos, almacén, cigarrillos, vapeadores y cargas virtuales. ¡Siempre cerca tuyo!">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+
+    <!-- ===== BOOTSTRAP 5 CSS (CDN) =====
+         Bootstrap es un framework CSS que nos da clases listas para usar:
+         grillas, botones, navbar, cards, utilidades de spacing, etc.
+         Al cargarlo desde CDN no necesitamos descargarlo. -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome para los íconos (carrito, redes sociales, etc.) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Google Fonts: Barlow Condensed (titulares) + Barlow (cuerpo) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Barlow:wght@400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!-- Nuestro CSS personalizado: solo lo que Bootstrap no cubre (colores de marca, hero, animaciones) -->
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
+    <!-- ===================== NAVBAR CON BOOTSTRAP =====================
+         Clases usadas:
+         - navbar: componente base de Bootstrap para barras de navegación
+         - navbar-expand-lg: el menú se expande en pantallas "lg" (≥992px);
+           en pantallas más chicas colapsa en un menú hamburger automático
+         - sticky-top: la navbar queda fija en la parte superior al hacer scroll
+         - navbar-toggler: botón hamburger que Bootstrap genera automáticamente
+         - collapse navbar-collapse: el contenedor que se muestra/oculta en móvil
+    -->
     <header>
-        <div id="header-conteiner">
-            <div id="logo">
-                <img src="img/logo-original.webp" alt="Logo Maxikiosco El 86">
-            </div>
+        <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
+            <div class="container-fluid px-4">
 
-            <nav>
-                <ul>
-                    <li><a href="">INICIO</a></li>
-                    <li><a href="">GOLOSOSINAS</a></li>
-                    <li><a href="">BEBIDAS</a></li>
-                    <li><a href="">ALMACEN</a></li>
-                    <li><a href="">VAPEADORES</a></li>
-                    <li><a href="">CONTACTO</a></li>
-                    <li><a href="">PROMOS</a></li>
-                </ul>
-            </nav>
-        </div>
+                <!-- Logo del negocio -->
+                <a class="navbar-brand" href="#inicio">
+                    <img src="img/logo-original.webp" alt="Logo Maxikiosco El 86" id="nav-logo">
+                </a>
+
+                <!-- BOOTSTRAP: Este botón hamburger lo genera Bootstrap automáticamente.
+                     data-bs-toggle="collapse" y data-bs-target="#navbarMenu
+                     le dicen a Bootstrap qué elemento tiene que mostrar/ocultar -->
+                <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#navbarMenu"
+                    aria-controls="navbarMenu" aria-expanded="false" aria-label="Abrir menú">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Menú colapsable: en mobile está oculto, en desktop visible -->
+                <div class="collapse navbar-collapse justify-content-end" id="navbarMenu">
+                    <ul class="navbar-nav gap-1">
+                        <!-- nav-link: clase de Bootstrap para links dentro de navbar -->
+                        <li class="nav-item"><a class="nav-link" href="#inicio">INICIO</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#productos">GOLOSINAS</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#productos">BEBIDAS</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#productos">ALMACÉN</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#productos">VAPEADORES</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contacto">CONTACTO</a></li>
+                        <!-- Clase custom "nav-promo" para el botón destacado de promos -->
+                        <li class="nav-item"><a class="nav-link nav-promo" href="#promos">PROMOS</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
     </header>
 
+
     <main>
-        <h1 class="brand-header"> Maxikiosco El 86</h1>
-        <h2> Nuestros Productos</h2>
-        <ul class="gallery">
-            <li>
-                <div class="box">
-                    <figure>
-                        <img src="img/cerveza-heineken-1-lt.jpg" alt="cerveza-heineken-1-lt">
-                        <figcaption>
-                            <h3>Heineken Retornable 1LT</h3>
-                            <p> $5.000 </p>
-                            <time datetime="">12-05-26</time>
-                        </figcaption>
-                    </figure>
-                    <button class="buttom" value="1" data-price="5000">Añadir al carrito <i
-                            class="fa-solid fa-cart-shopping"></i></button>
+
+        <!-- ===================== SECCIÓN HERO =====================
+             El hero usa clases de Bootstrap para layout:
+             - container: limita el ancho máximo y centra el contenido
+             - row / col-*: sistema de grilla de 12 columnas de Bootstrap
+               col-lg-7: en pantallas grandes ocupa 7 de 12 columnas
+               col-lg-5: en pantallas grandes ocupa 5 de 12 columnas
+             - d-flex, align-items-center: utilidades Flexbox de Bootstrap
+             - text-center text-lg-start: alineación responsiva (centrado en móvil, izquierda en desktop)
+        -->
+        <section class="hero" id="inicio">
+            <div class="container py-5">
+                <div class="row align-items-center gy-4">
+
+                    <!-- Columna del texto: ocupa 7/12 en desktop, 12/12 en móvil -->
+                    <div class="col-12 col-lg-7 text-center text-lg-start">
+                        <p class="hero-eyebrow">5 años en Villa Bosch</p>
+                        <h1 class="hero-title">
+                            ¿Se te antojó <br>
+                            <span class="hero-highlight">algo rico?</span>
+                        </h1>
+                        <p class="hero-subtitle">
+                            Bebidas frías, golosinas, almacén, cigarrillos, vapeadores y cargas virtuales.<br>
+                            <strong>¡El 86 siempre tiene lo que buscás!</strong>
+                        </p>
+
+                        <!-- d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start:
+                             los botones están en fila, centrados en móvil y a la izquierda en desktop -->
+                        <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
+                            <a href="#productos" class="btn btn-hero-primary">
+                                Ver productos <i class="fa-solid fa-arrow-down ms-1"></i>
+                            </a>
+                            <a href="https://wa.me/5491100000000" target="_blank" class="btn btn-hero-secondary">
+                                <i class="fa-brands fa-whatsapp me-1"></i> Consultar por WhatsApp
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Columna de la imagen: ocupa 5/12 en desktop, oculta en móvil (d-none d-lg-flex) -->
+                    <div class="col-lg-5 d-none d-lg-flex justify-content-center">
+                        <img src="img/logo-original.webp" alt="El 86 Maxikiosco" class="hero-image-logo">
+                    </div>
+
                 </div>
-            </li>
-            <li>
-                <div class="box">
-                    <figure>
-                        <img src="img/cerveza-quilmes-1-lt-argentina.jpg" alt="quilmes-1-lt-argentina">
-                        <figcaption>
-                            <h3>Quilmes Rubia Retornable 1LT</h3>
-                            <p> $3.500 </p>
-                            <time datetime="">12-05-26</time>
-                        </figcaption>
-                    </figure>
-                    <button class="buttom" value="2" data-price="3500">Añadir al carrito <i
-                            class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+
+            <!-- Ola SVG decorativa que separa el hero del contenido -->
+            <div class="hero-wave">
+                <svg viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- CAMBIO: fill actualizado al azul oscuro para empalmar con la sección productos -->
+                    <path d="M0,40 C300,80 900,0 1200,40 L1200,80 L0,80 Z" fill="#0D1B3E"/>
+                </svg>
+            </div>
+        </section>
+
+
+        <!-- ===================== SECCIÓN PRODUCTOS =====================
+             Bootstrap Grid:
+             - container: centra el contenido con padding lateral
+             - row row-cols-2 row-cols-md-3 row-cols-lg-4: define cuántas tarjetas
+               por fila según el tamaño de pantalla:
+               · Celular: 2 columnas
+               · Tablet (md ≥768px): 3 columnas
+               · Desktop (lg ≥992px): 4 columnas
+             - g-4: gap (separación) entre columnas y filas
+             - h-100: hace que todas las cards tengan la misma altura en cada fila
+        -->
+        <section id="productos" class="py-5">
+            <div class="container">
+
+                <!-- Título de sección centrado -->
+                <h2 class="section-title text-center mb-5">Nuestras Bebidas</h2>
+
+                <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
+
+                    <!-- === CARD Bootstrap: Producto 1 — Heineken ===
+                         - card: componente card de Bootstrap (caja con borde redondeado y sombra)
+                         - h-100: todas las cards ocupan el 100% del alto de su fila (se igualan)
+                         - card-img-top: imagen en la parte superior de la card
+                         - card-body: área de texto dentro de la card
+                         - mt-auto: empuja el botón hacia abajo si el texto es más corto
+                    -->
+                    <div class="col">
+                        <div class="card product-card h-100">
+                            <img src="img/cerveza-heineken-1-lt.jpg"
+                                class="card-img-top product-img"
+                                alt="Cerveza Heineken 1 litro retornable">
+                            <div class="card-body d-flex flex-column">
+                                <h3 class="card-title product-name">Heineken Retornable 1LT</h3>
+                                <p class="product-price">$5.000</p>
+                                <time datetime="2026-05-12" class="product-date">Precio al 12/05/26</time>
+                                <!-- mt-auto hace que el botón siempre quede al fondo de la card -->
+                                <button class="btn btn-add mt-auto"
+                                    value="1" data-price="5000" data-name="Heineken Retornable 1LT">
+                                    Añadir al carrito <i class="fa-solid fa-cart-shopping ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- === CARD: Producto 2 — Quilmes === -->
+                    <div class="col">
+                        <div class="card product-card h-100">
+                            <img src="img/cerveza-quilmes-1-lt-argentina.jpg"
+                                class="card-img-top product-img"
+                                alt="Cerveza Quilmes Rubia 1 litro retornable">
+                            <div class="card-body d-flex flex-column">
+                                <h3 class="card-title product-name">Quilmes Rubia Retornable 1LT</h3>
+                                <p class="product-price">$3.500</p>
+                                <time datetime="2026-05-12" class="product-date">Precio al 12/05/26</time>
+                                <button class="btn btn-add mt-auto"
+                                    value="2" data-price="3500" data-name="Quilmes Rubia Retornable 1LT">
+                                    Añadir al carrito <i class="fa-solid fa-cart-shopping ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- === CARD: Producto 3 — Coca Cola === -->
+                    <div class="col">
+                        <div class="card product-card h-100">
+                            <img src="img/coca-cola-2-25-lt.jpg"
+                                class="card-img-top product-img"
+                                alt="Coca Cola descartable 2.25 litros">
+                            <div class="card-body d-flex flex-column">
+                                <h3 class="card-title product-name">Coca Cola Descartable 2.25LT</h3>
+                                <p class="product-price">$4.500</p>
+                                <time datetime="2026-05-12" class="product-date">Precio al 12/05/26</time>
+                                <button class="btn btn-add mt-auto"
+                                    value="3" data-price="4500" data-name="Coca Cola Descartable 2.25LT">
+                                    Añadir al carrito <i class="fa-solid fa-cart-shopping ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- === CARD: Producto 4 — Pepsi === -->
+                    <div class="col">
+                        <div class="card product-card h-100">
+                            <img src="img/pepsi-cola-2-lt.jpg"
+                                class="card-img-top product-img"
+                                alt="Pepsi Cola 2 litros">
+                            <div class="card-body d-flex flex-column">
+                                <h3 class="card-title product-name">Pepsi Cola 2LT</h3>
+                                <p class="product-price">$3.800</p>
+                                <time datetime="2026-05-12" class="product-date">Precio al 12/05/26</time>
+                                <button class="btn btn-add mt-auto"
+                                    value="4" data-price="3800" data-name="Pepsi Cola 2LT">
+                                    Añadir al carrito <i class="fa-solid fa-cart-shopping ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- === CARD: Producto 5 — Manaos Cola === -->
+                    <div class="col">
+                        <div class="card product-card h-100">
+                            <img src="img/manaos-cola-1-5-lt.png"
+                                class="card-img-top product-img"
+                                alt="Manaos Cola 1.5 litros">
+                            <div class="card-body d-flex flex-column">
+                                <h3 class="card-title product-name">Manaos Cola 1.5LT</h3>
+                                <p class="product-price">$1.500</p>
+                                <time datetime="2026-05-12" class="product-date">Precio al 12/05/26</time>
+                                <button class="btn btn-add mt-auto"
+                                    value="5" data-price="1500" data-name="Manaos Cola 1.5LT">
+                                    Añadir al carrito <i class="fa-solid fa-cart-shopping ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- === CARD: Producto 6 — Soda Manaos === -->
+                    <div class="col">
+                        <div class="card product-card h-100">
+                            <img src="img/soda-manaos-2l.jpg"
+                                class="card-img-top product-img"
+                                alt="Soda Manaos 2 litros">
+                            <div class="card-body d-flex flex-column">
+                                <h3 class="card-title product-name">Soda Manaos 2LT</h3>
+                                <p class="product-price">$1.300</p>
+                                <time datetime="2026-05-12" class="product-date">Precio al 12/05/26</time>
+                                <button class="btn btn-add mt-auto"
+                                    value="6" data-price="1300" data-name="Soda Manaos 2LT">
+                                    Añadir al carrito <i class="fa-solid fa-cart-shopping ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- === CARD: Producto 7 — Monster Guaraná === -->
+                    <div class="col">
+                        <div class="card product-card h-100">
+                            <img src="img/monster-energy-guarana.jpg"
+                                class="card-img-top product-img"
+                                alt="Monster Energy Guaraná 473ml">
+                            <div class="card-body d-flex flex-column">
+                                <h3 class="card-title product-name">Monster Energy Guaraná 473ML</h3>
+                                <p class="product-price">$3.200</p>
+                                <time datetime="2026-05-12" class="product-date">Precio al 12/05/26</time>
+                                <button class="btn btn-add mt-auto"
+                                    value="7" data-price="3200" data-name="Monster Energy Guaraná 473ML">
+                                    Añadir al carrito <i class="fa-solid fa-cart-shopping ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- === CARD: Producto 8 — Monster Mango Loco === -->
+                    <div class="col">
+                        <div class="card product-card h-100">
+                            <img src="img/monster-mango-loco.jpg"
+                                class="card-img-top product-img"
+                                alt="Monster Energy Mango Loco 473ml">
+                            <div class="card-body d-flex flex-column">
+                                <h3 class="card-title product-name">Monster Mango Loco 473ML</h3>
+                                <p class="product-price">$3.200</p>
+                                <time datetime="2026-05-12" class="product-date">Precio al 12/05/26</time>
+                                <button class="btn btn-add mt-auto"
+                                    value="8" data-price="3200" data-name="Monster Mango Loco 473ML">
+                                    Añadir al carrito <i class="fa-solid fa-cart-shopping ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!-- fin .row -->
+            </div><!-- fin .container -->
+        </section>
+
+
+        <!-- ===================== SECCIÓN CONTACTO =====================
+             Bootstrap text-center, py-5: centrado y padding vertical con utilidades Bootstrap
+        -->
+        <section id="contacto" class="contacto-section py-5">
+            <div class="container text-center">
+                <h2 class="section-title text-white mb-4">¿Dónde estamos?</h2>
+                <!-- justify-content-center: centra los items del row -->
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-8 col-lg-6">
+                        <!-- d-flex flex-column gap-3: lista vertical con separación entre items -->
+                        <div class="d-flex flex-column gap-3 align-items-center">
+                            <p class="contacto-item mb-0">
+                                <i class="fa-solid fa-location-dot me-2"></i>
+                                Villa Bosch, Partido de Tres de Febrero, Bs. As.
+                            </p>
+                            <p class="contacto-item mb-0">
+                                <i class="fa-solid fa-clock me-2"></i>
+                                Lunes a Domingo: 8:00 — 23:00 hs
+                            </p>
+                            <p class="contacto-item mb-0">
+                                <i class="fa-brands fa-whatsapp me-2"></i>
+                                <a href="https://wa.me/5491100000000" target="_blank" class="contacto-link">
+                                    Consultas por WhatsApp
+                                </a>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-            </li>
-            <li>
-                <div class="box">
-                    <figure>
-                        <img src="img/coca-cola-2-25-lt.jpg" alt="coca-cola-2-25-lt">
-                        <figcaption>
-                            <h3>Coca Cola Descartable de 2.25LT </h3>
-                            <p> $4.500 </p>
-                            <time datetime="">12-05-26</time>
-                        </figcaption>
-                    </figure>
-                    <button class="buttom" value="2" data-price="4500">Añadir al carrito <i
-                            class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </li>
-            <li>
-                <div class="box">
-                    <figure>
-                        <img src="img/manaos-cola-1-5-lt.png" alt="manaos-cola-1-5-lt">
-                        <figcaption>
-                            <h3>Manaos Cola de 1.5LT </h3>
-                            <p> $1.500 </p>
-                            <time datetime="">12-05-26</time>
-                        </figcaption>
-                    </figure>
-                    <button class="buttom" value="2" data-price="1500">Añadir al carrito <i
-                            class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </li>
-            <li>
-                <div class="box">
-                    <figure>
-                        <img src="img/soda-manaos-2l.jpg" alt="soda-manaos-2l">
-                        <figcaption>
-                            <h3>Soda Manaos de 2LT</h3>
-                            <p> $1.300 </p>
-                            <time datetime="">12-05-26</time>
-                        </figcaption>
-                    </figure>
-                    <button class="buttom" value="2" data-price="1300">Añadir al carrito <i
-                            class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </li>
-
-
-
-
-
-
-
-
+            </div>
+        </section>
 
     </main>
 
 
-    <footer>
-        <div class="footer-content">
-            <div class=" footer-nav">
-                <ul>
-                    <li><a href="">INICIO</a></li>
-                    <li><a href="">GOLOSINAS</a></li>
-                    <li><a href="">BEBIDAS</a></li>
-                    <li><a href="">ALMACEN</a></li>
-                    <li><a href="">VAPEADORES</a></li>
-                    <li><a href="">CONTACTO</a></li>
-                    <li><a href="">PROMOS</a></li>
-                    <li><a href="">POLITICA DE PRIVACIDAD</a></li>
+    <!-- ===================== FOOTER =====================
+         Bootstrap: container, d-flex, flex-wrap, gap-*, text-center
+    -->
+    <footer class="site-footer py-4">
+        <div class="container">
+
+            <!-- Nav del footer: flex con wrap para que los links pasen a la siguiente línea en móvil -->
+            <nav class="footer-nav mb-3">
+                <ul class="list-unstyled d-flex flex-wrap justify-content-center gap-2 mb-0">
+                    <li><a href="#inicio" class="footer-link">INICIO</a></li>
+                    <li><a href="#productos" class="footer-link">GOLOSINAS</a></li>
+                    <li><a href="#productos" class="footer-link">BEBIDAS</a></li>
+                    <li><a href="#productos" class="footer-link">ALMACÉN</a></li>
+                    <li><a href="#productos" class="footer-link">VAPEADORES</a></li>
+                    <li><a href="#contacto" class="footer-link">CONTACTO</a></li>
+                    <li><a href="#promos" class="footer-link">PROMOS</a></li>
+                    <li><a href="#" class="footer-link">POLÍTICA DE PRIVACIDAD</a></li>
                 </ul>
+            </nav>
+
+            <!-- Redes sociales centradas con gap -->
+            <div class="d-flex justify-content-center gap-4 mb-3">
+                <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook" class="footer-social-link">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+                <a href="https://x.com/" target="_blank" aria-label="Twitter/X" class="footer-social-link">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram" class="footer-social-link">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
             </div>
 
-            <div class="footer-social">
-                <a href="https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2F%3Flocale%3Des_LA"><i
-                        class="fa-brands fa-facebook"></i></a>
-                <a href="https://x.com/?lang=es"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-
-            <div class="footer-copyright">
-
-                <p>&copy; 2026 Maxikiosco "El 86". Todos los derechos reservados.</p>
-
-            </div>
+            <p class="text-center footer-copy mb-0">
+                &copy; 2026 Maxikiosco "El 86". Todos los derechos reservados.
+            </p>
 
         </div>
-
-
     </footer>
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-</body>
 
+
+    <!-- ===== BOOTSTRAP 5 JS (CDN) =====
+         DEBE ir al final del body. El bundle incluye Popper.js (necesario para
+         dropdowns, tooltips, etc.) y el JS de Bootstrap.
+         SIN este script, el menú hamburger de la navbar NO funciona. -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
 </html>
