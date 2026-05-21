@@ -1,0 +1,128 @@
+html {
+font-size: 16px;
+}
+:root {
+ --color-nav:#333333;
+
+}
+
+body {
+  background-color: #ffffff;
+  font-size: 16px;
+}
+
+
+#header-conteiner {
+display: flex;
+justify-content: space-around;
+align-items: center ;
+padding: 10px 20px;
+font-family: "Barlow Condensed", sans-serif;
+
+background-color:#BD0B03;
+ width: 100%;
+}
+
+#header-container #logo {
+  padding: 0px 20px 0px 20px;
+}
+
+
+nav ul li {
+list-style: none;
+display:inline;
+}
+
+nav ul li a{
+font-size: 1.9rem;
+padding: 15px;
+text-decoration: none;
+color: #ffffff;
+}
+
+nav ul li a:hover {
+  background-color: #e75050;
+  color: #fff;
+}
+
+.brand-header {
+display: flex;
+justify-content: center;
+font-size: "Barlow Condensed", sans-serif;
+font-size: 4rem;
+font-weight: 700;
+}
+
+main h2 {
+display: flex;
+justify-content: center;
+font-family: "Barlow Condensed", sans-serif;
+font-size: 2.5rem;
+font-weight: 500;
+}
+
+.gallery {
+display: flex;
+justify-content: center;
+list-style: none;
+flex-wrap: wrap;
+font-family: "Barlow Condensed", sans-serif;
+}
+
+
+
+
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.footer-nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-nav ul li {
+  margin: 0 15px;
+}
+
+.footer-nav ul li a {
+  color: var(--color-nav);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.footer-nav ul li a:hover {
+  color: #e50c39;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.footer-social i {
+  margin: 0 10px;
+  font-size: 1.5rem;
+  color: var(--color-nav);
+  cursor: pointer;
+}
+
+.footer-social i:hover {
+  color: #e50c39;
+}
+
+.footer-copyright {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  padding-top: 20px;
+}
